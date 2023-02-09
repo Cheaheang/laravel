@@ -3,6 +3,9 @@
 use App\Http\Controllers\MyController;
 use Illuminate\Support\Facades\Route;
 use App\Models\second;
+use App\Http\Controllers\PostTableController;
+
+
  /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,10 +25,20 @@ Route::get('/conn', function () {
     return view('conn');
 });
 
-Route::post('/saveItem',[MyController::class, 'saveItem']) 
+Route::post('/saveItem',[MyController::class, 'saveItem'])
 ->name('saveItem');
 //Route::get('/test',[MyController::class,'index']);
 
-Route::get('/display',function(){
-    return view('displayData');
+// Route::get('/display',function(){
+//     return view('displayData');
+// });
+Route::get('/index','MyController@index') ;
+// Route::get('/show','MyController@show') ;
+
+Route::post('/show',[MyController::class, 'show']) ;
+
+Route::get('table', function () {
+    return view('php');
 });
+Route::get('/seconds',[PostTableController::class, 'index'])->name('seconds');
+
